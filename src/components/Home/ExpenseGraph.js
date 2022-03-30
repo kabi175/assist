@@ -1,16 +1,19 @@
+import moment from 'moment'
 import React from 'react'
 import { View } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
+import useExpenseSelector from 'hooks/useExpenseSelector'
 import ExpenseMeter from './ExpenseMeter'
 import Header from './Header'
 
 const ExpenseGraph = () => {
-  const month = 'September'
-  const year = '2022'
+  const year = moment().year()
+  const month = moment().month()
+  const expenses = useExpenseSelector({ year, month })
   const budget = 3000
-  const expence = 1000
+  const expence = expenses.reduce((acc, cur) => acc + cur.amount, 0)
   return (
     <View style={tw`flex justify-center items-center w-full h-3/5`}>
       <Card containerStyle={tw`w-11/12 h-5/6 rounded-lg `}>

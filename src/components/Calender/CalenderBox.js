@@ -1,19 +1,20 @@
-import { View, Text, Pressable } from 'react-native'
+import { Text, Pressable } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 import { useSelector, useDispatch } from 'react-redux'
-import { action } from 'slices'
+import { actions } from 'slices'
+import PropTypes from 'prop-types'
 
 const CalenderBox = ({ char }) => {
-  const isDate = char == null || !isNaN(parseInt(char))
+  const isDate = char == null || !Number.isNaN(parseInt(char, 10))
   const color = isDate ? colors.primary : colors.black
   const { date } = useSelector((state) => state.calender)
   const dispatch = useDispatch()
 
   const handleClick = () => {
     if (!isDate || char == null) return
-    dispatch(action.setCalenderDate({ date: char }))
+    dispatch(actions.setCalenderDate({ date: char }))
   }
 
   return (
@@ -29,6 +30,14 @@ const CalenderBox = ({ char }) => {
       <Text style={[tw`font-bold text-base`, { color }]}> {char} </Text>
     </Pressable>
   )
+}
+
+CalenderBox.propTypes = {
+  char: PropTypes.string,
+}
+
+CalenderBox.defaultProps = {
+  char: null,
 }
 
 export default CalenderBox

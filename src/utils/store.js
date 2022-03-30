@@ -6,22 +6,34 @@ import {
 import logger from 'redux-logger'
 import appReducer from 'slices/app.slice'
 import calenderReducer from 'slices/calender.slice'
+import expenseReducer from 'slices/expense.slice'
+
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { persistStore, persistReducer } from 'redux-persist'
 
 const rootReducer = combineReducers({
   app: appReducer,
   calender: calenderReducer,
+  expense: expenseReducer,
   // add more reducers
 })
+
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const defaultMiddleware = getDefaultMiddleware({
   serializableCheck: false,
   immutableCheck: false,
 })
 
-const store = configureStore({
-  reducer: rootReducer,
+export const store = configureStore({
+  reducer: persistedReducer,
   // eslint-disable-next-line no-undef
   middleware: __DEV__ ? defaultMiddleware.concat(logger) : defaultMiddleware,
 })
 
-export default store
+export const persistor = persistStore(store)

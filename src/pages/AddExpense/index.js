@@ -1,12 +1,17 @@
-import { View, StyleSheet, StatusBar } from 'react-native'
 import React from 'react'
+
+import { View, StyleSheet, StatusBar } from 'react-native'
+
 import {
   HeaderArea,
   InputArea,
   Category,
   AddButton,
+  Description,
 } from 'components/AddExpense'
+
 import { colors } from 'theme'
+import { useExpense } from 'hooks'
 
 const styles = StyleSheet.create({
   root: {
@@ -17,18 +22,22 @@ const styles = StyleSheet.create({
   },
 })
 
-const AddExpense = () => (
-  <View style={styles.root}>
-    <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-    <HeaderArea />
-    <InputArea />
-    <Category />
+const AddExpense = () => {
+  const { useAmount, useDescription, useCategory, submit } = useExpense()
+  return (
+    <View style={styles.root}>
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+      <HeaderArea />
+      <InputArea useAmount={useAmount} />
+      <Category useCategory={useCategory} />
+      <Description useDescription={useDescription} />
 
-    {/* bock to expand between Category and Addbutton */}
-    <View style={{ flexGrow: 1 }} />
+      {/* bock to expand between Category and Addbutton */}
+      <View style={{ flexGrow: 1 }} />
 
-    <AddButton />
-  </View>
-)
+      <AddButton submit={submit} />
+    </View>
+  )
+}
 
 export default AddExpense

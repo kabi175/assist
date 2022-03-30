@@ -1,6 +1,5 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { colors } from 'theme'
 import Home from 'pages/Home'
 import AddExpense from 'pages/AddExpense'
 import Calender from 'pages/Calender'
@@ -12,9 +11,7 @@ import Calender from 'pages/Calender'
 const Stack = createStackNavigator()
 
 const navigationProps = {
-  headerTintColor: 'white',
-  headerStyle: { backgroundColor: colors.darkPurple },
-  headerTitleStyle: { fontSize: 18 },
+  headerShown: false,
 }
 
 // ------------------------------------

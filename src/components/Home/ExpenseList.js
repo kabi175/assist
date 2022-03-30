@@ -17,7 +17,7 @@ const EmptyExpenseList = () => {
           borderRadius: 50,
         }}
         onPress={() => {
-          navigation.navigate('Root', { screen: 'AddExpense' })
+          navigation.navigate('HomeStack', { screen: 'AddExpense' })
         }}
       >
         <FontIcon name="plus" size={25} color={colors.white} />

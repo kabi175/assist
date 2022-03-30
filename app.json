@@ -17,11 +17,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kabilan175.assist"
     },
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": ["js", "jsx", "svg", "ts", "tsx"]
+    },
+    "android": {
+      "package": "com.kabilan175.assist"
     }
   }
 }

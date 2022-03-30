@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import moment from 'moment'
 
@@ -18,6 +19,7 @@ const initialState = {
 const appSlice = createSlice({
   name: 'calender',
   initialState,
+
   reducers: {
     setCalender: (state, { payload }) => {
       state.month = payload.month
@@ -38,7 +40,7 @@ const appSlice = createSlice({
   },
 })
 
-export const { action } = appSlice
+export const { actions } = appSlice
 export const {
   setCalender,
   setCalenderToDefault,

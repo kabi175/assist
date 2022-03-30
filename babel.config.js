@@ -13,6 +13,7 @@ module.exports = (api) => {
             utils: './src/utils',
             slices: './src/slices',
             hooks: './src/hooks',
+            service: './src/service',
           },
         },
       ],

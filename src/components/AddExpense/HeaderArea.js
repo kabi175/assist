@@ -21,7 +21,13 @@ const HeaderArea = () => {
         name="closecircle"
         color={colors.white}
         size={22}
-        onPress={() => navigation.goBack()}
+        onPress={() => {
+          if (navigation.canGoBack()) {
+            navigation.goBack()
+          } else {
+            navigation.navigate('HomeStack', { screen: 'Home' })
+          }
+        }}
       />
     </View>
   )

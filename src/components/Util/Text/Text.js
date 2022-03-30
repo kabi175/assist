@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Text } from 'react-native'
 import React from 'react'
 import { colors } from 'theme'

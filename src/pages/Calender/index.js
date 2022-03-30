@@ -1,16 +1,20 @@
 import { View, StatusBar } from 'react-native'
 import React from 'react'
 import { HeaderArea, CalenderMonth, SelectButton } from 'components/Calender'
-import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 
 const Calender = () => {
+  console.log('jdncj')
   return (
     <View
-      style={
-        ([tw`flex`],
-        { backgroundColor: colors.lightGrayPurple, height: '100%' })
-      }
+      style={[
+        {
+          backgroundColor: colors.lightGrayPurple,
+          flex: 0,
+          height: '100%',
+          width: '100%',
+        },
+      ]}
     >
       <StatusBar
         barStyle="dark-content"
@@ -18,6 +22,7 @@ const Calender = () => {
       />
       <HeaderArea />
       <CalenderMonth />
+      {/* bock to expand between Category and Addbutton */}
       <SelectButton />
     </View>
   )

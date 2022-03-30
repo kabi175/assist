@@ -9,10 +9,10 @@ import { useNavigation } from '@react-navigation/native'
 
 const HeaderArea = () => {
   const navigation = useNavigation()
-  const { year, month, date } = useSelector((state) => state.calender)
+  const { year, month } = useSelector((state) => state.calender)
   const monthName = calender.monthNameFromNumber(month)
   return (
-    <View style={[tw`flex-row items-center justify-between  p-5`]}>
+    <View style={[tw`flex-row items-center justify-between  px-5 py-8`]}>
       <View>
         <Text style={[tw`font-bold text-3xl`, { color: colors.primary }]}>
           {monthName}

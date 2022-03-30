@@ -1,5 +1,4 @@
 import moment from 'moment'
-import { func } from 'prop-types'
 
 const newWeek = () => {
   const week = []
@@ -21,7 +20,7 @@ function useCalender(month, year) {
     const day = startDate.day()
     week[day] = date
     startDate.add(1, 'day')
-    if (day === 6 || isSameMonth(startDate, month) == false) {
+    if (day === 6 || isSameMonth(startDate, month) === false) {
       calender.push(week)
       week = newWeek()
     }
@@ -30,17 +29,13 @@ function useCalender(month, year) {
 }
 
 function nextMonth(month, year) {
-  const nextMonth = moment().month(month).year(year).date(1).add(1, 'month')
-  return nextMonth
+  return moment().month(month).year(year).date(1)
+    .add(1, 'month')
 }
 
 function prevMonth(month, year) {
-  const prevMonth = moment()
-    .month(month)
-    .year(year)
-    .date(1)
+  return moment().month(month).year(year).date(1)
     .subtract(1, 'month')
-  return prevMonth
 }
 
 function monthNameFromMoment(date) {
