@@ -5,6 +5,8 @@ import { Card, Button } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 import useExpenseSelector from 'hooks/useExpenseSelector'
+import useBudgetSelector from 'hooks/useBudgetSelector'
+import { useNavigation } from '@react-navigation/native'
 import ExpenseMeter from './ExpenseMeter'
 import Header from './Header'
 
@@ -12,8 +14,10 @@ const ExpenseGraph = () => {
   const year = moment().year()
   const month = moment().month()
   const expenses = useExpenseSelector({ year, month })
-  const budget = 3000
   const expence = expenses.reduce((acc, cur) => acc + cur.amount, 0)
+  const budgets = useBudgetSelector({ year, month })
+  const budget = budgets.reduce((acc, cur) => acc + cur.amount, 0)
+  const navigation = useNavigation()
   return (
     <View style={tw`flex justify-center items-center w-full h-3/5`}>
       <Card containerStyle={tw`w-11/12 h-5/6 rounded-lg `}>
@@ -29,6 +33,9 @@ const ExpenseGraph = () => {
               }}
               containerStyle={{
                 color: colors.primary,
+              }}
+              onPress={() => {
+                navigation.navigate('HomeStack', { screen: 'AddBudget' })
               }}
             />
           </View>

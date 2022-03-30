@@ -33,7 +33,7 @@ const CalenderBox = ({ char }) => {
 }
 
 CalenderBox.propTypes = {
-  char: PropTypes.string,
+  char: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 CalenderBox.defaultProps = {

@@ -4,17 +4,19 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { persistStore, persistReducer } from 'redux-persist'
+
 import appReducer from 'slices/app.slice'
 import calenderReducer from 'slices/calender.slice'
 import expenseReducer from 'slices/expense.slice'
-
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { persistStore, persistReducer } from 'redux-persist'
+import budgetReducer from 'slices/budget.slice'
 
 const rootReducer = combineReducers({
   app: appReducer,
   calender: calenderReducer,
   expense: expenseReducer,
+  budget: budgetReducer,
   // add more reducers
 })
 

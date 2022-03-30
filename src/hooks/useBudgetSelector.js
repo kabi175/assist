@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 export default function useExpenseSelector({ day, month, year } = {}) {
-  const { expenses } = useSelector((state) => state.expense)
-  const [expense, setExpense] = useState([])
+  const { budget: budgets } = useSelector((state) => state.budget)
+  console.log('useExpenseSelector', budgets)
+  const [budget, setBudget] = useState([])
   useEffect(() => {
-    if (expenses.length === 0) return
-    const expenseR = expenses.filter(({ date = {} }) => {
+    if (budgets.length === 0) return
+    const expenseFiltered = budgets.filter(({ date = {} }) => {
       return (
         (!day || date.day === day)
         && (!month || date.month === month)
         && (!year || date.year === year)
       )
     })
-    setExpense(expenseR)
-  }, [expenses])
-  return expense
+    setBudget(expenseFiltered)
+  }, [budgets])
+  return budget
 }

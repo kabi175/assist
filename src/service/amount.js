@@ -30,7 +30,6 @@ function formatAmountWithSeperator(amount) {
     res = `${str.substring(len - 2, len)},${res}`
     str = str.substring(0, len - 2)
   }
-  console.log(res)
   return res
 }
 

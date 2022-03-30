@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from 'pages/Home'
 import AddExpense from 'pages/AddExpense'
+import AddBudget from 'pages/AddBudget'
 import Calender from 'pages/Calender'
 
 // ------------------------------------
@@ -45,6 +46,13 @@ export const HomeNavigator = () => (
         headerShown: false,
       })}
     />
+    <Stack.Screen
+      name="AddBudget"
+      component={AddBudget}
+      options={() => ({
+        headerShown: false,
+      })}
+    />
   </Stack.Navigator>
 )
 
@@ -59,6 +67,22 @@ export const AddExpenseNavigator = () => (
       component={AddExpense}
       options={() => ({
         title: 'AddExpense',
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const AddBudgetNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="AddBudget"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="AddBudget"
+      component={AddBudget}
+      options={() => ({
+        title: 'AddBudget',
       })}
     />
   </Stack.Navigator>

@@ -19,6 +19,9 @@ const appSlice = createSlice({
   initialState,
 
   reducers: {
+    clear: (state) => {
+      state.budget = []
+    },
     addBudget: (state, { payload }) => {
       state.budget = [...state.budget, payload]
     },
@@ -36,8 +39,8 @@ const appSlice = createSlice({
   },
 })
 
-export const { action } = appSlice
+export const { actions } = appSlice
 
-export const { addBudget, removeBudget, editBudget } = appSlice.actions
+export const { clear, addBudget, removeBudget, editBudget } = appSlice.actions
 
 export default appSlice.reducer
