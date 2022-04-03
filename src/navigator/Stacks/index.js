@@ -1,3 +1,3 @@
-import { HomeNavigator, AddExpenseNavigator } from './Stacks'
+import { HomeNavigator, AddExpenseNavigator, StatsNavigator } from './Stacks'
 
-export { HomeNavigator, AddExpenseNavigator }
+export { HomeNavigator, AddExpenseNavigator, StatsNavigator }

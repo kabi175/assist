@@ -4,6 +4,7 @@ import Home from 'pages/Home'
 import AddExpense from 'pages/AddExpense'
 import AddBudget from 'pages/AddBudget'
 import Calender from 'pages/Calender'
+import Stats from 'pages/Stats'
 
 // ------------------------------------
 // Constants
@@ -82,7 +83,23 @@ export const AddBudgetNavigator = () => (
       name="AddBudget"
       component={AddBudget}
       options={() => ({
-        title: 'AddBudget',
+        headerShown: false,
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const StatsNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Stats"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Stats"
+      component={Stats}
+      options={() => ({
+        headerShown: false,
       })}
     />
   </Stack.Navigator>

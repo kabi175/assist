@@ -5,7 +5,6 @@ export default function useExpenseSelector({ day, month, year } = {}) {
   const { expenses } = useSelector((state) => state.expense)
   const [expense, setExpense] = useState([])
   useEffect(() => {
-    if (expenses.length === 0) return
     const expenseR = expenses.filter(({ date = {} }) => {
       return (
         (!day || date.day === day)

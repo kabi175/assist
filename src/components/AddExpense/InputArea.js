@@ -13,7 +13,7 @@ import { month2Str, dmy2day } from 'service/date'
 const InputArea = ({ useAmount }) => {
   const navigation = useNavigation()
   const [amount, setAmount] = useAmount()
-  const { date, month, year } = useSelector((state) => state.calender)
+  const { date, month, year } = useSelector((state) => state.calender.selected)
   const monthStr = month2Str(month)
   const day = dmy2day({ date, month, year })
   const dateStr = `${day}, ${date} ${monthStr} ${year}`
@@ -27,6 +27,7 @@ const InputArea = ({ useAmount }) => {
       <Text style={tw`font-bold`}>Amount</Text>
       <Input
         placeholder="Enter"
+        keyboardType="numeric"
         rightIcon={{
           type: 'font-awesome',
           name: 'rupee',

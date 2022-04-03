@@ -23,7 +23,10 @@ const AddButton = ({ submit }) => {
           alignItems: 'center',
         }}
         onPress={() => {
-          submit()
+          const isSuccess = submit()
+          if (!isSuccess) {
+            return
+          }
           if (navigation.canGoBack()) {
             navigation.goBack()
           } else {

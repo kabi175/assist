@@ -20,6 +20,10 @@ export function month2Str(month) {
   return moment().month(month).format('MMMM')
 }
 
+export function monthName2Nmbr(month) {
+  return moment().month(month).month()
+}
+
 export function dmy2day({ date, month, year }) {
   return moment().month(month).year(year).date(date)
     .format('dddd')

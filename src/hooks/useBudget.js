@@ -6,16 +6,21 @@ import { formatAmountWithoutSeperator } from 'service/amount'
 
 export default function useBudget() {
   const dispatch = useDispatch()
-  const date = useSelector((state) => state.calender)
+  const date = useSelector((state) => state.calender.selected)
   const [amount_, setAmount_] = useState('')
   const submit = () => {
-    dispatch(
-      actions.addBudget({
-        _id: nanoid(),
-        date,
-        amount: parseInt(formatAmountWithoutSeperator(amount_), 10),
-      }),
-    )
+    const amount = parseInt(formatAmountWithoutSeperator(amount_), 10)
+    if (!Number.isNaN(amount)) {
+      dispatch(
+        actions.addBudget({
+          _id: nanoid(),
+          date,
+          amount,
+        }),
+      )
+      return true
+    }
+    return false
   }
 
   return {

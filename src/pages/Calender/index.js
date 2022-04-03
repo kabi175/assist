@@ -1,30 +1,43 @@
 import { View, StatusBar } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HeaderArea, CalenderMonth, SelectButton } from 'components/Calender'
 import { colors } from 'theme'
+import { useDispatch } from 'react-redux'
+import { actions } from 'slices'
+import GestureRecognizer from 'react-native-swipe-gestures'
 
 const Calender = () => {
-  console.log('jdncj')
+  const dispath = useDispatch()
+  useEffect(() => {
+    dispath(actions.setCalenderToDefault())
+  })
   return (
-    <View
-      style={[
-        {
-          backgroundColor: colors.lightGrayPurple,
-          flex: 0,
-          height: '100%',
-          width: '100%',
-        },
-      ]}
+    <GestureRecognizer
+      onSwipeUp={() => dispath(actions.incrementCalenderYear())}
+      onSwipeDown={() => dispath(actions.decrementCalenderYear())}
+      onSwipeLeft={() => dispath(actions.incrementCalenderMonth())}
+      onSwipeRight={() => dispath(actions.decrementCalenderMonth())}
     >
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={colors.lightGrayPurple}
-      />
-      <HeaderArea />
-      <CalenderMonth />
-      {/* bock to expand between Category and Addbutton */}
-      <SelectButton />
-    </View>
+      <View
+        style={[
+          {
+            backgroundColor: colors.lightGrayPurple,
+            flex: 0,
+            height: '100%',
+            width: '100%',
+          },
+        ]}
+      >
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={colors.lightGrayPurple}
+        />
+        <HeaderArea />
+        <CalenderMonth />
+        {/* bock to expand between Category and Addbutton */}
+        <SelectButton />
+      </View>
+    </GestureRecognizer>
   )
 }
 

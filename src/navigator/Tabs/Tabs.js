@@ -3,10 +3,11 @@ import { View, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontIcon from 'react-native-vector-icons/Octicons'
 import Ionicons from 'react-native-vector-icons/MaterialIcons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import { colors } from 'theme'
 
 // stack navigators
-import { HomeNavigator, AddExpenseNavigator } from '../Stacks'
+import { HomeNavigator, AddExpenseNavigator, StatsNavigator } from '../Stacks'
 
 const Tab = createBottomTabNavigator()
 
@@ -32,6 +33,14 @@ const TabNavigator = () => (
                 size={26}
               />
             )
+          case 'StatsStack':
+            return (
+              <AntDesign
+                name="linechart"
+                color={focused ? colors.primary : colors.secondary}
+                size={22}
+              />
+            )
           default:
             return <View />
         }
@@ -55,9 +64,23 @@ const TabNavigator = () => (
                 Expense
               </Text>
             )
+          case 'StatsStack':
+            return (
+              <Text
+                style={{ color: focused ? colors.primary : colors.secondary }}
+              >
+                Stats
+              </Text>
+            )
 
           default:
-            return <Text style={{ color: colors.primary }}>{route.name}</Text>
+            return (
+              <Text
+                style={{ color: focused ? colors.primary : colors.secondary }}
+              >
+                {route.name}
+              </Text>
+            )
         }
       },
     })}
@@ -79,6 +102,7 @@ const TabNavigator = () => (
     initialRouteName="Home"
   >
     <Tab.Screen name="HomeStack" component={HomeNavigator} />
+    <Tab.Screen name="StatsStack" component={StatsNavigator} />
     <Tab.Screen name="AddExpenseStack" component={AddExpenseNavigator} />
   </Tab.Navigator>
 )

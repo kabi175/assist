@@ -9,13 +9,13 @@ const newWeek = () => {
   return week
 }
 
-const isSameMonth = (date, month) => date.isSame(moment().month(month), 'month')
+const isSameMonth = (date, month) => date.month() === moment().month(month).month()
 
 function useCalender(month, year) {
   const startDate = moment().month(month).year(year).date(1)
   const calender = []
   let week = newWeek()
-  while (isSameMonth(startDate, month)) {
+  while (isSameMonth(startDate, month, year)) {
     const date = startDate.date()
     const day = startDate.day()
     week[day] = date

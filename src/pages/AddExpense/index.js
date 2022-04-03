@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { View, StyleSheet, StatusBar } from 'react-native'
+import {
+  View, StyleSheet, StatusBar, KeyboardAvoidingView,
+} from 'react-native'
 
 import {
   HeaderArea,
@@ -24,19 +26,22 @@ const styles = StyleSheet.create({
 
 const AddExpense = () => {
   const { useAmount, useDescription, useCategory, submit } = useExpense()
+  const [enable, setEnable] = useState(false)
   return (
-    <View style={styles.root}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-      <HeaderArea />
-      <InputArea useAmount={useAmount} />
-      <Category useCategory={useCategory} />
-      <Description useDescription={useDescription} />
+    <KeyboardAvoidingView behavior="position" enabled={enable}>
+      <View style={styles.root}>
+        <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+        <HeaderArea />
+        <InputArea useAmount={useAmount} />
+        <Category useCategory={useCategory} />
+        <Description useDescription={useDescription} enable={setEnable} />
 
-      {/* bock to expand between Category and Addbutton */}
-      <View style={{ flexGrow: 1 }} />
+        {/* bock to expand between Category and Addbutton */}
+        <View style={{ flexGrow: 1 }} />
 
-      <AddButton submit={submit} />
-    </View>
+        <AddButton submit={submit} />
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 

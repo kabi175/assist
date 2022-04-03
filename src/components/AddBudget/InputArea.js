@@ -18,6 +18,7 @@ const InputArea = ({ useAmount }) => {
       <Text style={tw`text-lg font-bold`}>Budget</Text>
       <Input
         placeholder="Enter"
+        keyboardType="numeric"
         rightIcon={{
           type: 'font-awesome',
           name: 'rupee',

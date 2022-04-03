@@ -1,3 +1,4 @@
+import moment from 'moment'
 /**
  *
  * @param {string} amount
@@ -32,5 +33,19 @@ function formatAmountWithSeperator(amount) {
   }
   return res
 }
+function nextMonth(month, year) {
+  return moment().month(month).year(year).date(1)
+    .add(1, 'month')
+}
 
-export { formatAmountWithSeperator, formatAmountWithoutSeperator }
+function prevMonth(month, year) {
+  return moment().month(month).year(year).date(1)
+    .subtract(1, 'month')
+}
+
+export {
+  formatAmountWithSeperator,
+  formatAmountWithoutSeperator,
+  nextMonth,
+  prevMonth,
+}

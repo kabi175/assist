@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 const CalenderBox = ({ char }) => {
   const isDate = char == null || !Number.isNaN(parseInt(char, 10))
   const color = isDate ? colors.primary : colors.black
-  const { date } = useSelector((state) => state.calender)
+  const { date } = useSelector((state) => state.calender.current)
   const dispatch = useDispatch()
 
   const handleClick = () => {

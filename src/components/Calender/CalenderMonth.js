@@ -3,13 +3,14 @@ import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { useSelector } from 'react-redux'
 import { calender } from 'hooks'
+import { month2Str } from 'service/date'
 import CalenderRow from './CalenderRow'
 
 const weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 
 const CalenderMonth = () => {
-  const { year, month } = useSelector((state) => state.calender)
-  const monthName = calender.monthNameFromNumber(month)
+  const { year, month } = useSelector((state) => state.calender.current)
+  const monthName = month2Str(month)
   const calenderArray = calender.useCalender(monthName, year)
   return (
     <View style={([tw`flex flex-col items-center`], { flexGrow: 1 })}>

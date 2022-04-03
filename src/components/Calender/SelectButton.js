@@ -4,9 +4,12 @@ import { Button } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
+import { actions } from 'slices'
 
 const SelectButton = () => {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
   return (
     <View style={[tw`flex justify-end items-center pb-3`]}>
       <Button
@@ -21,7 +24,10 @@ const SelectButton = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}
-        onPress={() => navigation.goBack()}
+        onPress={() => {
+          dispatch(actions.selectDate())
+          navigation.goBack()
+        }}
       />
     </View>
   )
