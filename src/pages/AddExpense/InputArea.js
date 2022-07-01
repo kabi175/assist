@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
 import { Input } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
@@ -7,19 +7,33 @@ import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import PropTypes from 'prop-types'
 import { formatAmountWithSeperator } from 'service/amount'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
-import { month2Str, dmy2day } from 'service/date'
+import moment from 'moment'
 
-const InputArea = ({ useAmount }) => {
+const formatDate = (dateObj) => {
+  const d = moment(dateObj)
+  const day = d.format('dddd')
+  const date = d.format('DD')
+  const monthStr = d.format('MMM')
+  const year = d.format('YYYY')
+  return `${day}, ${date} ${monthStr} ${year}`
+}
+
+const InputArea = ({ useAmount, useDate }) => {
   const navigation = useNavigation()
+  const [selected, setSelected] = useDate()
   const [amount, setAmount] = useAmount()
-  const { date, month, year } = useSelector((state) => state.calender.selected)
-  const monthStr = month2Str(month)
-  const day = dmy2day({ date, month, year })
-  const dateStr = `${day}, ${date} ${monthStr} ${year}`
   const validateChange = (value) => {
     const amountStr = formatAmountWithSeperator(value)
     setAmount(amountStr)
+  }
+  const onCalenderPress = () => {
+    navigation.navigate('AddExpenseStack', {
+      screen: 'Calender',
+      params: {
+        selected,
+        setSelected,
+      },
+    })
   }
 
   return (
@@ -45,15 +59,13 @@ const InputArea = ({ useAmount }) => {
       />
       <View style={tw`flex-row justify-between`}>
         <Text style={[tw`font-bold`, { color: colors.primary }]}>
-          {dateStr}
+          {formatDate(selected)}
         </Text>
         <FontIcon
           name="calendar-alt"
           size={22}
           color={colors.secondary}
-          onPress={() => {
-            navigation.navigate('HomeStack', { screen: 'Calender' })
-          }}
+          onPress={onCalenderPress}
         />
       </View>
     </View>
@@ -62,6 +74,7 @@ const InputArea = ({ useAmount }) => {
 
 InputArea.propTypes = {
   useAmount: PropTypes.func.isRequired,
+  useDate: PropTypes.func.isRequired,
 }
 
 export default InputArea

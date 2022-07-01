@@ -1,15 +1,16 @@
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 import FontIcon from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
 import { month2Str } from 'service/date'
+import PropTypes from 'prop-types'
 
-const HeaderArea = () => {
+const HeaderArea = ({ date }) => {
   const navigation = useNavigation()
-  const { year, month } = useSelector((state) => state.calender.current)
+  const year = date.getFullYear()
+  const month = date.getMonth()
   const monthName = month2Str(month)
   return (
     <View style={[tw`flex-row items-center justify-between  px-5 py-8`]}>
@@ -27,6 +28,10 @@ const HeaderArea = () => {
       />
     </View>
   )
+}
+
+HeaderArea.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
 }
 
 export default HeaderArea

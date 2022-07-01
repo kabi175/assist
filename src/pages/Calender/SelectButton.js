@@ -4,12 +4,14 @@ import { Button } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
 import { useNavigation } from '@react-navigation/native'
-import { useDispatch } from 'react-redux'
-import { actions } from 'slices'
+import propTypes from 'prop-types'
 
-const SelectButton = () => {
+const SelectButton = ({ onPress }) => {
   const navigation = useNavigation()
-  const dispatch = useDispatch()
+  const onPressHandler = () => {
+    onPress()
+    navigation.goBack()
+  }
   return (
     <View style={[tw`flex justify-end items-center pb-3`]}>
       <Button
@@ -24,13 +26,14 @@ const SelectButton = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}
-        onPress={() => {
-          dispatch(actions.selectDate())
-          navigation.goBack()
-        }}
+        onPress={onPressHandler}
       />
     </View>
   )
+}
+
+SelectButton.propTypes = {
+  onPress: propTypes.func.isRequired,
 }
 
 export default SelectButton

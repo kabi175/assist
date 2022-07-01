@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontIcon from 'react-native-vector-icons/Octicons'
 import Ionicons from 'react-native-vector-icons/MaterialIcons'
@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { colors } from 'theme'
 
 // stack navigators
-import { HomeNavigator, AddExpenseNavigator, StatsNavigator } from '../Stacks'
+import { AddExpenseNavigator, HomeNavigator, StatsNavigator } from '../Stacks'
 
 const Tab = createBottomTabNavigator()
 
@@ -20,7 +20,7 @@ const TabNavigator = () => (
           case 'HomeStack':
             return (
               <FontIcon
-                name="note"
+                name="home"
                 color={focused ? colors.primary : colors.secondary}
                 size={22}
               />
@@ -88,11 +88,6 @@ const TabNavigator = () => (
       activeTintColor: colors.lightPurple,
       inactiveTintColor: colors.gray,
       style: {
-        // backgroundColor: 'white',
-        // borderTopColor: 'gray',
-        // borderTopWidth: 1,
-        // paddingBottom: 5,
-        // paddingTop: 5,
         color: colors.primary,
         flex: 0,
         justifyContent: 'center',

@@ -70,6 +70,13 @@ export const AddExpenseNavigator = () => (
         title: 'AddExpense',
       })}
     />
+    <Stack.Screen
+      name="Calender"
+      component={Calender}
+      options={() => ({
+        headerShown: false,
+      })}
+    />
   </Stack.Navigator>
 )
 

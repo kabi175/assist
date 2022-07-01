@@ -1,7 +1,7 @@
-import { View, StatusBar, StyleSheet } from 'react-native'
+import { StatusBar, StyleSheet, View } from 'react-native'
 import React from 'react'
-import { HeaderArea, InputArea, AddButton } from 'components/AddBudget'
-import useBudget from 'hooks/useBudget'
+import { AddButton, HeaderArea, InputArea } from 'components/AddBudget'
+import useAddBudget from 'hooks/useAddBudget'
 import { colors } from 'theme'
 
 const styles = StyleSheet.create({
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 })
 const AddBudget = () => {
-  const { useAmount, submit } = useBudget()
+  const { useAmount, submit } = useAddBudget()
   return (
     <View style={styles.root}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />

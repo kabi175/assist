@@ -1,43 +1,40 @@
-import { View, StatusBar } from 'react-native'
-import React, { useEffect } from 'react'
-import { HeaderArea, CalenderMonth, SelectButton } from 'components/Calender'
+import { LogBox, StatusBar, View } from 'react-native'
+import React, { useState } from 'react'
+import CalenderView from 'components/Calender'
 import { colors } from 'theme'
-import { useDispatch } from 'react-redux'
-import { actions } from 'slices'
-import GestureRecognizer from 'react-native-swipe-gestures'
+import { useRoute } from '@react-navigation/native'
+import HeaderArea from './HeaderArea'
+import SelectButton from './SelectButton'
 
 const Calender = () => {
-  const dispath = useDispatch()
-  useEffect(() => {
-    dispath(actions.setCalenderToDefault())
-  })
+  const { params } = useRoute()
+  const { selected, setSelected } = params || {}
+  const [date, setDate] = useState(selected)
+
+  LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state',
+  ])
+
   return (
-    <GestureRecognizer
-      onSwipeUp={() => dispath(actions.incrementCalenderYear())}
-      onSwipeDown={() => dispath(actions.decrementCalenderYear())}
-      onSwipeLeft={() => dispath(actions.incrementCalenderMonth())}
-      onSwipeRight={() => dispath(actions.decrementCalenderMonth())}
+    <View
+      style={[
+        {
+          backgroundColor: colors.lightGrayPurple,
+          flex: 0,
+          height: '100%',
+          width: '100%',
+        },
+      ]}
     >
-      <View
-        style={[
-          {
-            backgroundColor: colors.lightGrayPurple,
-            flex: 0,
-            height: '100%',
-            width: '100%',
-          },
-        ]}
-      >
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={colors.lightGrayPurple}
-        />
-        <HeaderArea />
-        <CalenderMonth />
-        {/* bock to expand between Category and Addbutton */}
-        <SelectButton />
-      </View>
-    </GestureRecognizer>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.lightGrayPurple}
+      />
+      <HeaderArea date={date} />
+      <CalenderView selected={date} onSelect={setDate} />
+      {/* bock to expand between Category and Add button */}
+      <SelectButton onPress={() => setSelected(date)} />
+    </View>
   )
 }
 

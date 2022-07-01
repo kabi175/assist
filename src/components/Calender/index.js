@@ -1,5 +1,6 @@
-import SelectButton from './SelectButton'
-import HeaderArea from './HeaderArea'
-import CalenderMonth from './CalenderMonth'
+import SelectButton from '../../pages/Calender/SelectButton'
+import HeaderArea from '../../pages/Calender/HeaderArea'
+import Calender from './Calender'
 
-export { SelectButton, HeaderArea, CalenderMonth }
+export { SelectButton, HeaderArea }
+export default Calender

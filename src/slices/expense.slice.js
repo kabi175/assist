@@ -40,6 +40,7 @@ const appSlice = createSlice({
 })
 
 export const { actions } = appSlice
-export const { addExpense, removeExpense, editExpense, clear } = appSlice.actions
+export const { addExpense, removeExpense, editExpense, clear } =
+  appSlice.actions
 
 export default appSlice.reducer

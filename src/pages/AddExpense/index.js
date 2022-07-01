@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 
 import {
-  View, StyleSheet, StatusBar, KeyboardAvoidingView,
+ KeyboardAvoidingView, StatusBar, StyleSheet, View 
 } from 'react-native'
 
-import {
-  HeaderArea,
-  InputArea,
-  Category,
-  AddButton,
-  Description,
-} from 'components/AddExpense'
-
 import { colors } from 'theme'
-import { useExpense } from 'hooks'
+import { useAddExpense } from 'hooks'
+import HeaderArea from './HeaderArea'
+import InputArea from './InputArea'
+import Category from './Category'
+import Description from './Description'
+import AddButton from './AddButton'
 
 const styles = StyleSheet.create({
   root: {
@@ -25,18 +22,19 @@ const styles = StyleSheet.create({
 })
 
 const AddExpense = () => {
-  const { useAmount, useDescription, useCategory, submit } = useExpense()
+  const { useAmount, useDescription, useCategory, useDate, submit } =
+    useAddExpense()
   const [enable, setEnable] = useState(false)
   return (
     <KeyboardAvoidingView behavior="position" enabled={enable}>
       <View style={styles.root}>
         <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
         <HeaderArea />
-        <InputArea useAmount={useAmount} />
+        <InputArea useAmount={useAmount} useDate={useDate} />
         <Category useCategory={useCategory} />
         <Description useDescription={useDescription} enable={setEnable} />
 
-        {/* bock to expand between Category and Addbutton */}
+        {/* bock to expand between Category and Add button */}
         <View style={{ flexGrow: 1 }} />
 
         <AddButton submit={submit} />

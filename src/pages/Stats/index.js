@@ -1,10 +1,22 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import { HeaderArea, StatsList } from 'components/Stats'
+import { colors } from 'theme'
+
+const style = StyleSheet.create({
+  root: {
+    flex: 1,
+    backgroundColor: colors.lightGrayPurple,
+    width: '100%',
+    height: '100%',
+  },
+})
 
 const Stats = () => {
   return (
-    <View>
-      <Text>Stats</Text>
+    <View style={[style.root]}>
+      <HeaderArea />
+      <StatsList />
     </View>
   )
 }
