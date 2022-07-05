@@ -5,9 +5,7 @@ import { getDatesOfMonth } from 'service/calender'
 import { nanoid } from '@reduxjs/toolkit'
 import propTypes from 'prop-types'
 import GestureRecognizer from 'react-native-swipe-gestures'
-import {
- nextMonth, nextYear, previousMonth, previousYear 
-} from 'service/date'
+import { nextMonth, nextYear, previousMonth, previousYear } from 'service/date'
 import CalenderRow from './CalenderRow'
 
 export const weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
