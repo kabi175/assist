@@ -1,22 +1,30 @@
 import { View } from 'react-native'
 import Text from 'components/Util/Text'
-import React from 'react'
+import React, { useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
 import { useNavigation } from '@react-navigation/native'
 import { monthNameFromNumber } from 'service/calender'
 import propTypes from 'prop-types'
-import useClear from '../../hooks/useClear'
+import useClear from 'hooks/useClear'
 
 const Header = ({ month, year }) => {
   const navigation = useNavigation()
   const monthName = monthNameFromNumber(month)
+  const [selected, setSelected] = useState(new Date())
   const onClickCalender = () =>
-    navigation?.navigate('HomeStack', { screen: 'Calender' })
+    navigation?.navigate('HomeStack', {
+      screen: 'Calender',
+      params: {
+        selected,
+        setSelected,
+      },
+    })
 
+  const clear = useClear()
   const onClickClear = () => {
-    useClear()
+    clear()
   }
   return (
     <View style={tw`flex flex-row justify-between items-center w-full`}>

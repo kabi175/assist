@@ -4,6 +4,8 @@ import { actions as expense } from 'slices/expense.slice'
 
 export default function useClear() {
   const dispatch = useDispatch()
-  dispatch(budget.clear())
-  dispatch(expense.clear())
+  return () => {
+    dispatch(budget.clear())
+    dispatch(expense.clear())
+  }
 }

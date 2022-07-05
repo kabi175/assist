@@ -40,9 +40,16 @@ export function previousYear(date) {
   return moment(date).subtract(1, 'year').toDate()
 }
 
-export function isSameMonth(date, month, year) {
-  if (!date) return false
-  return date.getMonth() === month && date.getFullYear() === year
+export function isSameDate(object, { date, month, year }) {
+  if (!object) return false
+  if (date) {
+    return (
+      object.getMonth() === month &&
+      object.getFullYear() === year &&
+      object.getDate() === date
+    )
+  }
+  return object.getMonth() === month && object.getFullYear() === year
 }
 
 export const isDate = (date) => util.isDate(date)

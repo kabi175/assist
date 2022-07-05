@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { HeaderArea, StatsList } from 'components/Stats'
+import { StyleSheet, View } from 'react-native'
 import { colors } from 'theme'
+import HeaderArea from './HeaderArea'
+import StatsList from './StatsList'
 
 const style = StyleSheet.create({
   root: {

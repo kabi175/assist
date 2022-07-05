@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 
-import {
- KeyboardAvoidingView, StatusBar, StyleSheet, View 
-} from 'react-native'
+import { KeyboardAvoidingView, StatusBar, StyleSheet, View } from 'react-native'
 
 import { colors } from 'theme'
-import { useAddExpense } from 'hooks'
+import useAddExpense from 'hooks/useAddExpense'
 import HeaderArea from './HeaderArea'
 import InputArea from './InputArea'
 import Category from './Category'
