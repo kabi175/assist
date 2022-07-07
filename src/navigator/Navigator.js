@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { Text } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { authenticate } from 'slices/app.slice'
+import { useSelector } from 'react-redux'
 
 import TabNavigator from './Tabs'
 
 const Navigator = () => {
-  const { checked, loggedIn } = useSelector((state) => state.app)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(authenticate({ loggedIn: true, checked: true }))
-  }, [])
-
-  // TODO: switch router by loggedIn state
-  console.log('[##] loggedIn', loggedIn)
+  const { checked } = useSelector((state) => state.app)
 
   return checked ? (
     <NavigationContainer>

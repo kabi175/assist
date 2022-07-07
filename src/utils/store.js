@@ -6,12 +6,10 @@ import {
 import logger from 'redux-logger'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { persistReducer, persistStore } from 'redux-persist'
-import appReducer from 'slices/app.slice'
 import expenseReducer from 'slices/expense.slice'
 import budgetReducer from 'slices/budget.slice'
 
 const rootReducer = combineReducers({
-  app: appReducer,
   expense: expenseReducer,
   budget: budgetReducer,
   // add more reducers
