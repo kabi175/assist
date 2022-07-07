@@ -26,11 +26,10 @@ const ExpenseGraph = () => {
           <ProgressBar budget={budgetSum} expense={expenseSum} />
           <View style={tw`flex flex-row justify-center items-center`}>
             <Text primary style={tw`font-bold`}>
-              {expenseSum}{' '}
+              ₹ {expenseSum}
             </Text>
             <Text secondary style={tw`font-bold`}>
-              {'/ '}
-              {budgetSum}
+              {' / '}₹ {budgetSum}
             </Text>
           </View>
           <View style={tw`flex justify-center items-center`}>

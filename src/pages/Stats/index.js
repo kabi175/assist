@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 import { colors } from 'theme'
 import HeaderArea from './HeaderArea'
-import StatsList from './StatsList'
+import StatsList from './ExpenseList'
+import Filters from './Filters'
 
 const style = StyleSheet.create({
   root: {
@@ -15,10 +16,11 @@ const style = StyleSheet.create({
 
 const Stats = () => {
   return (
-    <View style={[style.root]}>
+    <ScrollView style={[style.root]}>
       <HeaderArea />
+      <Filters />
       <StatsList />
-    </View>
+    </ScrollView>
   )
 }
 
