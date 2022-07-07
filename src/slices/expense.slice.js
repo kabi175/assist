@@ -26,7 +26,7 @@ const appSlice = createSlice({
       state.expenses = [...state.expenses, payload]
     },
     removeExpense: (state, { payload }) => {
-      state.expenses = state.expenses.filter((item) => item.id !== payload._id)
+      state.expenses = state.expenses.filter((item) => item._id !== payload._id)
     },
     editExpense: (state, { payload }) => {
       state.expenses = state.expenses.map((item) => {

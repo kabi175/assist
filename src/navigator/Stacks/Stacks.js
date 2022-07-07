@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from 'pages/Home'
-import AddExpense from 'pages/AddExpense'
+import Expense from 'pages/Expense'
 import AddBudget from 'pages/AddBudget'
 import Calender from 'pages/Calender'
 import Stats from 'pages/Stats'
@@ -35,7 +35,7 @@ export const HomeNavigator = () => (
     />
     <Stack.Screen
       name="AddExpense"
-      component={AddExpense}
+      component={Expense}
       options={() => ({
         headerShown: false,
       })}
@@ -65,7 +65,7 @@ export const AddExpenseNavigator = () => (
   >
     <Stack.Screen
       name="AddExpense"
-      component={AddExpense}
+      component={Expense}
       options={() => ({
         title: 'AddExpense',
       })}
@@ -105,6 +105,13 @@ export const StatsNavigator = () => (
     <Stack.Screen
       name="Stats"
       component={Stats}
+      options={() => ({
+        headerShown: false,
+      })}
+    />
+    <Stack.Screen
+      name="EditExpense"
+      component={Expense}
       options={() => ({
         headerShown: false,
       })}
