@@ -1,8 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import { colors } from 'theme'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const ionicons = {
   Food: 'ios-fast-food-sharp',
@@ -15,6 +16,11 @@ const ionicons = {
 const fontIcons = {
   Calender: 'calendar-alt',
   Fun: 'laugh-beam',
+  PiggyBank: 'piggy-bank',
+}
+
+const materialCommunityIcons = {
+  Bank: 'bank-plus',
 }
 
 const Icon = ({ name, size, color }) => {
@@ -23,6 +29,16 @@ const Icon = ({ name, size, color }) => {
   }
   if (fontIcons[name]) {
     return <FontAwesome5 name={fontIcons[name]} size={size} color={color} />
+  }
+
+  if (materialCommunityIcons) {
+    return (
+      <MaterialCommunityIcons
+        name={materialCommunityIcons[name]}
+        size={size}
+        color={color}
+      />
+    )
   }
   return null
 }

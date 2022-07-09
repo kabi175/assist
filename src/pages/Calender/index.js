@@ -32,7 +32,7 @@ const Calender = () => {
       />
       <HeaderArea date={date} />
       <CalenderView selected={date} onSelect={setDate} />
-      {/* bock to expand between Category and Add button */}
+      {/* bock to expand between CategoryList and Add button */}
       <SelectButton onPress={() => setSelected(date)} />
     </View>
   )

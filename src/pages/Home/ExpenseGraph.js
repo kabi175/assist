@@ -16,7 +16,6 @@ const ExpenseGraph = () => {
   const month = moment().month()
   const expenseSum = useExpenseSum(month, year)
   const budgetSum = useBudgetSum(month, year)
-  console.log(expenseSum, budgetSum)
   const navigation = useNavigation()
   return (
     <View style={tw`flex justify-center items-center w-full h-3/5`}>

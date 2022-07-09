@@ -26,12 +26,12 @@ const appSlice = createSlice({
       state.budget = [...state.budget, payload]
     },
     removeBudget: (state, { payload }) => {
-      state.budget = state.budget.filter((item) => item.id !== payload._id)
+      state.budget = state.budget.filter((item) => item._id !== payload._id)
     },
     editBudget: (state, { payload }) => {
       state.budget = state.budget.map((item) => {
         if (item._id === payload._id) {
-          return payload
+          return { ...item, ...payload }
         }
         return item
       })

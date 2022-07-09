@@ -16,10 +16,6 @@ export default function useEditExpense(id) {
 
   const expense = expenseList.find(({ _id }) => _id === id) || {}
 
-  if (id && !expense) {
-    throw new Error('Expense not found')
-  }
-
   const [amount_, setAmount_] = useState(
     formatAmountWithSeperator(expense.amount?.toString()) || '',
   )

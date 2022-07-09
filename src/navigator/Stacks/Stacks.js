@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from 'pages/Home'
 import Expense from 'pages/Expense'
-import AddBudget from 'pages/AddBudget'
+import Budget from 'pages/Budget'
 import Calender from 'pages/Calender'
 import Stats from 'pages/Stats'
 
@@ -12,7 +12,7 @@ import Stats from 'pages/Stats'
 
 const Stack = createStackNavigator()
 
-const navigationProps = {
+const screenOptions = {
   headerShown: false,
 }
 
@@ -24,36 +24,12 @@ export const HomeNavigator = () => (
   <Stack.Navigator
     initialRouteName="Home"
     headerMode="screen"
-    screenOptions={navigationProps}
+    screenOptions={screenOptions}
   >
-    <Stack.Screen
-      name="Home"
-      component={Home}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
-    <Stack.Screen
-      name="AddExpense"
-      component={Expense}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
-    <Stack.Screen
-      name="Calender"
-      component={Calender}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
-    <Stack.Screen
-      name="AddBudget"
-      component={AddBudget}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
+    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="AddExpense" component={Expense} />
+    <Stack.Screen name="Calender" component={Calender} />
+    <Stack.Screen name="AddBudget" component={Budget} />
   </Stack.Navigator>
 )
 
@@ -61,60 +37,20 @@ export const AddExpenseNavigator = () => (
   <Stack.Navigator
     initialRouteName="AddExpense"
     headerMode="screen"
-    screenOptions={navigationProps}
+    screenOptions={screenOptions}
   >
-    <Stack.Screen
-      name="AddExpense"
-      component={Expense}
-      options={() => ({
-        title: 'AddExpense',
-      })}
-    />
-    <Stack.Screen
-      name="Calender"
-      component={Calender}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
+    <Stack.Screen name="AddExpense" component={Expense} />
+    <Stack.Screen name="Calender" component={Calender} />
   </Stack.Navigator>
 )
-
-export const AddBudgetNavigator = () => (
-  <Stack.Navigator
-    initialRouteName="AddBudget"
-    headerMode="screen"
-    screenOptions={navigationProps}
-  >
-    <Stack.Screen
-      name="AddBudget"
-      component={AddBudget}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
-  </Stack.Navigator>
-)
-
 export const StatsNavigator = () => (
   <Stack.Navigator
     initialRouteName="Stats"
     headerMode="screen"
-    screenOptions={navigationProps}
+    screenOptions={screenOptions}
   >
-    <Stack.Screen
-      name="Stats"
-      component={Stats}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
-    <Stack.Screen
-      name="EditExpense"
-      component={Expense}
-      options={() => ({
-        headerShown: false,
-      })}
-    />
+    <Stack.Screen name="Stats" component={Stats} />
+    <Stack.Screen name="EditExpense" component={Expense} />
+    <Stack.Screen name="EditBudget" component={Budget} />
   </Stack.Navigator>
 )
