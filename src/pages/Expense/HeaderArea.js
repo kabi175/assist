@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { colors } from 'theme'
 import tw from 'tailwind-react-native-classnames'
-import FontIcon from 'react-native-vector-icons/AntDesign'
+import Icon from 'components/Icon'
 import { useNavigation } from '@react-navigation/native'
 
 const HeaderArea = () => {
@@ -17,8 +17,8 @@ const HeaderArea = () => {
       <Text style={[tw`font-bold text-xl`, { color: colors.white }]}>
         Add Expense
       </Text>
-      <FontIcon
-        name="closecircle"
+      <Icon
+        name="Close"
         color={colors.white}
         size={22}
         onPress={() => {

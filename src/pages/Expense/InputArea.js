@@ -3,11 +3,11 @@ import React from 'react'
 import { Input } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
 import { colors } from 'theme'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import PropTypes from 'prop-types'
 import { formatAmountWithSeperator } from 'service/amount'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
+import Icon from 'components/Icon'
 
 const formatDate = (dateObj) => {
   const d = moment(dateObj)
@@ -61,8 +61,8 @@ const InputArea = ({ useAmount, useDate }) => {
         <Text style={[tw`font-bold`, { color: colors.primary }]}>
           {formatDate(selected)}
         </Text>
-        <FontIcon
-          name="calendar-alt"
+        <Icon
+          name="Calendar"
           size={22}
           color={colors.secondary}
           onPress={onCalenderPress}

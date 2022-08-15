@@ -1,11 +1,11 @@
 import { Text, Pressable } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import { colors } from 'theme'
 import PropTypes from 'prop-types'
+import Icon from 'components/Icon'
 
-const CategoryIcon = ({ name, icon, selected, onPress }) => {
+const CategoryIcon = ({ name, selected, onPress }) => {
   const border = selected === name ? 'border-2' : 'border'
   const color = selected === name ? colors.primary : colors.secondary
   return (
@@ -16,7 +16,7 @@ const CategoryIcon = ({ name, icon, selected, onPress }) => {
       ]}
       onPress={() => onPress(name)}
     >
-      <Ionicons name={icon} size={26} color={color} />
+      <Icon name={name} size={26} color={color} />
       <Text style={{ color }}> {name} </Text>
     </Pressable>
   )
@@ -24,7 +24,6 @@ const CategoryIcon = ({ name, icon, selected, onPress }) => {
 
 CategoryIcon.propTypes = {
   name: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
   selected: PropTypes.string,
   onPress: PropTypes.func.isRequired,
 }

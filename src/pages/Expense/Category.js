@@ -4,32 +4,7 @@ import tw from 'tailwind-react-native-classnames'
 import PropTypes from 'prop-types'
 import CategoryIcon from './CategoryIcon'
 
-const categories = [
-  {
-    name: 'Food',
-    icon: 'ios-fast-food-sharp',
-  },
-  {
-    name: 'Transport',
-    icon: 'car-sport',
-  },
-  {
-    name: 'Fashion',
-    icon: 'shirt',
-  },
-  {
-    name: 'Bills',
-    icon: 'card',
-  },
-  {
-    name: 'Fun',
-    icon: 'tv',
-  },
-  {
-    name: 'Other',
-    icon: 'options',
-  },
-]
+const categories = ['Food', 'Transport', 'Fashion', 'Bills', 'Fun', 'Other']
 
 const Category = ({ useCategory }) => {
   const [selected, setSelected] = useCategory()
@@ -37,12 +12,12 @@ const Category = ({ useCategory }) => {
     <View style={[tw`flex px-5`]}>
       <Text style={[tw`font-bold`]}>Select Category</Text>
       <View style={tw`flex  justify-center flex-row flex-wrap`}>
-        {categories.map((obj) => (
+        {categories.map((name) => (
           <CategoryIcon
-            key={obj.name}
-            {...obj}
+            key={name}
+            name={name}
             selected={selected}
-            onPress={(name) => setSelected(name)}
+            onPress={() => setSelected(name)}
           />
         ))}
       </View>

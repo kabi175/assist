@@ -22,6 +22,7 @@ const fontIcons = {
 
 const antIcons = {
   Close: 'closecircle',
+  Plus: 'plus',
 }
 
 const materialCommunityIcons = {

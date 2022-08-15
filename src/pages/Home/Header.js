@@ -2,12 +2,12 @@ import { View } from 'react-native'
 import Text from 'components/Util/Text'
 import React, { useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
 import { useNavigation } from '@react-navigation/native'
 import { monthNameFromNumber } from 'service/calender'
 import propTypes from 'prop-types'
 import useClear from 'hooks/useClear'
+import Icon from 'components/Icon'
 
 const Header = ({ month, year }) => {
   const navigation = useNavigation()
@@ -35,8 +35,8 @@ const Header = ({ month, year }) => {
         <Text secondary>{year}</Text>
       </View>
       <View>
-        <FontIcon
-          name="calendar-alt"
+        <Icon
+          name="Calendar"
           size={22}
           color={colors.secondary}
           onPress={onClickCalender}

@@ -2,10 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { colors } from 'theme'
 import tw from 'tailwind-react-native-classnames'
-import FontIcon from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import { month2Str } from 'service/date'
+import Icon from 'components/Icon'
 
 const HeaderArea = () => {
   const navigation = useNavigation()
@@ -22,8 +22,8 @@ const HeaderArea = () => {
           {year}
         </Text>
       </View>
-      <FontIcon
-        name="closecircle"
+      <Icon
+        name="Close"
         color={colors.black}
         size={22}
         onPress={() => {
