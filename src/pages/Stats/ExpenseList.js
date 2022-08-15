@@ -9,9 +9,9 @@ import useBudget from 'hooks/useBudget'
 import propTypes from 'prop-types'
 import BudgetLog from '../../components/BudgetLog'
 
-const ExpenseList = ({ category }) => {
-  const month = new Date().getMonth()
-  const year = new Date().getFullYear()
+const ExpenseList = ({ category, selectedDate }) => {
+  const month = selectedDate.getMonth()
+  const year = selectedDate.getFullYear()
   let entryList = []
 
   switch (category) {
@@ -46,8 +46,9 @@ const ExpenseList = ({ category }) => {
   )
 }
 
-ExpenseList.propTyeps = {
+ExpenseList.propTypes = {
   category: propTypes.string.isRequired,
+  selectedDate: propTypes.instanceOf(Date).isRequired,
 }
 
 export default ExpenseList

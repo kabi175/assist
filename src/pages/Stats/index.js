@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import { colors } from 'theme'
 import HeaderArea from './HeaderArea'
@@ -17,12 +17,13 @@ const style = StyleSheet.create({
 
 const Stats = () => {
   const [selected, setSelected] = React.useState('Expense')
+  const [selectedDate, setSelectedDate] = useState(new Date())
   return (
     <ScrollView style={[style.root]}>
       <HeaderArea />
       <CategoryList selected={selected} setSelected={setSelected} />
-      <Filters />
-      <StatsList category={selected} />
+      <Filters selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+      <StatsList category={selected} selectedDate={selectedDate} />
     </ScrollView>
   )
 }

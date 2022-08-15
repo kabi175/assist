@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import tw from 'tailwind-react-native-classnames'
 import { useNavigation } from '@react-navigation/native'
+import propTypes from 'prop-types'
 import Icon from './Icon'
 import { colors } from '../theme'
 
@@ -41,4 +42,8 @@ const BudgetLog = ({ _id, amount }) => {
   )
 }
 
+BudgetLog.propTypes = {
+  _id: propTypes.string.isRequired,
+  amount: propTypes.number.isRequired,
+}
 export default BudgetLog
